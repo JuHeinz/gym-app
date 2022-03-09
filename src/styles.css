@@ -1,0 +1,150 @@
+/* General */
+
+body {
+    background-color: #3b3b3b;
+}
+
+.roundedRectancle {
+    background: #1DCE9A center center fixed;
+    background: -moz-linear-gradient(-45deg, #1DCE9A 0%, #8C8FCE 77%, #8C8FCE 100%);
+    background: -webkit-linear-gradient(-45deg, #1DCE9A 0%, #8C8FCE 77%, #8C8FCE 100%);
+    background: linear-gradient(135deg, #1DCE9A 0%, #8C8FCE 77%, #8C8FCE 100%);
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.roundedRectancle>.btn {
+    border: 1px solid white;
+}
+
+.applicationContainer {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 20px;
+
+}
+
+.applicationContainer>div {
+    flex-grow: 1;
+
+}
+
+
+/*Accordion */
+
+.accordion-button:not(.collapsed) {
+    /* Style for currently opened accordion item */
+    background-color: #8C8FCE;
+    color: white;
+}
+
+.accordion {
+    border: none;
+}
+
+.numberBadge {
+    background-color: #1DCE9A;
+}
+
+
+.statListElement {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.instructions {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #8C8FCE;
+    border: 1px solid transparent;
+}
+
+.btn-primary:hover {
+    background-color: #1DCE9A;
+    border: 1px solid transparent;
+}
+
+.btn-primary:active {
+    background-color: #1DCE9A;
+    border: 1px solid transparent;
+}
+
+.btn-primary:focus {
+    background-color: #1DCE9A;
+    border: none;
+}
+
+.btn-secondary {
+    background-color: #c8c8c8;
+    color: black;
+}
+
+.btnContainerTimerDone {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 1rem;
+    column-gap: 1rem;
+}
+
+.btnContainerTimerDone>.btn {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.5rem;
+}
+
+.btnContainerTimerDone>.btn>img {
+    height: 1rem
+}
+
+/* Form */
+
+.formCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    row-gap: 1rem;
+    column-gap: 1rem;
+}
+
+.card-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.formCard>div {
+    border: 1px solid #1DCE9A;
+    border-radius: 3px;
+    padding: 1rem;
+}
+
+.numericalFormFields {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    column-gap: 1rem;
+}
+
+.numericalFormFields>div {
+    padding: 1rem;
+    flex-grow: 1;
+}
