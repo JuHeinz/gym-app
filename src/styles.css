@@ -40,10 +40,15 @@ body {
 
 /*Accordion */
 
+
 .accordion-button:not(.collapsed) {
     /* Style for currently opened accordion item */
     background-color: #8C8FCE;
     color: white;
+}
+
+.exerciseName > img{
+   width: 2rem; 
 }
 
 .accordion {
@@ -70,6 +75,17 @@ body {
     margin-top: 1em;
 }
 
+.informationBadges{
+    display: flex;
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.informationBadges  .badge{
+    background-color: #c8c8c8; 
+    color: #616161;
+}
 /* Buttons */
 .btn-primary {
     background-color: #8C8FCE;
@@ -91,9 +107,16 @@ body {
     border: none;
 }
 
+.btn-primary:disabled {
+    background-color: #6c757d;
+    border: 1px solid transparent;
+}
+
+
 .btn-secondary {
     background-color: #c8c8c8;
-    color: black;
+    color: #616161;
+    font-weight: 700;
 }
 
 .btnContainerTimerDone {
@@ -134,7 +157,7 @@ body {
 .formCard>div {
     border: 1px solid #1DCE9A;
     border-radius: 3px;
-    padding: 1rem;
+    padding: 1rem;    
 }
 
 .numericalFormFields {

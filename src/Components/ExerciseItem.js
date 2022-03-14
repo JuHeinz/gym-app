@@ -5,14 +5,27 @@ import StatListElement from "./StatListElement";
 
 export default function ExerciseItem(props) {
 
-  
+    //Change the items appearance once the exercise is completed
+    let styles;
+    let checkIcon;
+
+    if (props.isDone) {
+
+        checkIcon = "./images/check-dark.svg"
+    } else {
+        checkIcon = ""
+
+    }
+    
+ 
+
     function StatList() {
         return (
             //These render only if the category (weight, time, reps) is needed
             <>
-                {props.stats.hold && <StatListElement number={props.stats.hold} category={"Hold Time"} symbol={"sek."} />}
-                {props.stats.reps && <StatListElement number={props.stats.reps} category={"Reps"} symbol={"times"} />}
-                {props.stats.weight && <StatListElement number={props.stats.weight} category={"Weight"} symbol={"kg"} />}
+                <StatListElement minusFunction={(sign)=>props.handleMinusClick(props.id, "hold", sign)} number={props.hold} id={props.id} category={"Hold Time"} symbol={"s"} />
+                <StatListElement minusFunction={(sign)=>props.handleMinusClick(props.id, "reps", sign)} number={props.reps} id={props.id} category={"Reps"} symbol={"times"} />
+                <StatListElement minusFunction={(sign)=>props.handleMinusClick(props.id, "weight", sign)} number={props.weight} id={props.id} category={"Weight"} symbol={"kg"} />
             </>)
 
     }
@@ -23,14 +36,17 @@ export default function ExerciseItem(props) {
 
     //Bootstrap Accordion
     return (
-        <div className="accordion-item ">
+
+
+        <div style={styles} className="accordion-item ">
+
 
             {/* Exercise Name */}
             <h2 className="accordion-header" id={props.exerciseName}>
                 <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target={collapseItemReference}
-                    aria-expanded="true" aria-controls={collapseItem}>
-                    <h2 className="display-6">{props.exerciseName}</h2>
+                    aria-expanded="false" aria-controls={collapseItem}>
+                    <h2 className="display-6 exerciseName">{props.exerciseName} <img src={checkIcon} style={styles} /> </h2>
                 </button>
             </h2>
             <div id={collapseItem} className="accordion-collapse collapse"
@@ -45,17 +61,43 @@ export default function ExerciseItem(props) {
                     </ul>
 
                     {/* Instructions */}
-                    <div className="instructions">
-                        <strong>Instructions:</strong> {props.instructions}
+                    <div className="instructions ">
+                        <div>
+                            <strong>Instructions:</strong>
+                            {props.instructions}
+                        </div>
+
+                        <div className="informationBadges">
+                            {/* Show type of cardio */}
+                            <span className="badge">{props.exerciseType}</span>
+
+                            {/* Show if mandatory */}
+                            {props.isMandatory && <span className="badge">Mandatory</span>}
+                        </div>
                     </div>
+
+
 
                     {/* Buttons */}
                     <div className="btnContainerTimerDone">
-                        {/* Only show timer button if the exercise includes a hold time */}
-                        {props.stats.hold && <button className="btn btn-primary" type="button"> <img src="./images/time.svg" /> Start Timer </button>}
 
-                        {/* Uses Ternary to set the Button Text */}
-                        <button className="btn btn-primary" type="button" onClick={()=>props.handleClick(props.ID)}> {props.isDone ? "Mark as done" : "Done!"}</button>
+                        {/* Start Timer Button */}
+                        {/* Only activate timer button if the exercise includes a hold time, else disabled */}
+                        <button className="btn btn-primary" type="button" disabled={(props.hold < 1) ? true : false}> <img src="./images/time.svg" /> Start Timer </button>
+
+                        {/* This button marks an exercise as done */}
+                        <button className="btn btn-primary" type="button"
+                            /* Toggles isDone state in parent element */
+                            onClick={() => props.handleClick(props.ID)}
+                            /* collapses current accordion item */
+                            data-bs-toggle="collapse"
+                            data-bs-target={collapseItemReference}
+                            aria-expanded="false" aria-controls={collapseItem}>
+                            <img src="./images/check.svg" />
+                            {/* Displays appropriate button text */}
+                            {props.isDone ? "Done!" : "Mark as done"}</button>
+
+
 
                     </div>
 
