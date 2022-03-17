@@ -4,12 +4,15 @@ import ExerciseItem from "./Components/ExerciseItem";
 import Form from "./Components/Form";
 import "./styles.css"
 import exerciseData from "./exerciseData";
+import TimerModal from "./Components/TimerModal";
 
 
 function Application() {
     const [exerciseArray, setExerciseArray] = React.useState(exerciseData);
 
-   
+
+
+
     //SUBSTRACT FROM COUNTER
     function subtract(id, category, sign) {
         setExerciseArray(prevExerciseArray => {
@@ -22,24 +25,24 @@ function Application() {
                     let modifier;
                     console.log(currentExercise)
                     //spread the entire previous Object into the new one
-                    if (sign ==="positive"){
-                         modifier= 1;
-                    }else{
-                        modifier= -1
+                    if (sign === "positive") {
+                        modifier = 1;
+                    } else {
+                        modifier = -1
                     }
 
                     console.log("sign is " + sign)
 
 
                     let minusCategory;
-                    if (category === "hold"){
+                    if (category === "hold") {
                         minusCategory = currentExercise.hold + modifier
-                    }else if (category === "weight"){
+                    } else if (category === "weight") {
                         minusCategory = currentExercise.weight + modifier
-                    }else{
+                    } else {
                         minusCategory = currentExercise.reps + modifier
                     }
-                   const updatedExercise = {
+                    const updatedExercise = {
                         ...currentExercise,
                         //but change the attribute we want to change
                         [category]: minusCategory

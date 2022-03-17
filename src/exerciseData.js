@@ -3,7 +3,7 @@ export default [
         ID: 1,
         exerciseName: "Sit ups",
         instructions: "Mollit et nulla fugiat mollit anim excepteur elit quis ad.",
-        hold: 0,
+        hold: 1,
         reps: 10,
         weight: 0,
         isDone: false,
